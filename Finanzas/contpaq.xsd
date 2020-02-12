@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="contpaq" targetNamespace="http://tempuri.org/contpaq.xsd" xmlns:mstns="http://tempuri.org/contpaq.xsd" xmlns="http://tempuri.org/contpaq.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="csContpaqFinagil" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="csContpaqFinagil (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.cuentasPorPagar.My.MySettings.GlobalReference.Default.csContpaqFinagil" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CuentasTableAdapter" GeneratorDataComponentClassName="CuentasTableAdapter" Name="Cuentas" UserDataComponentName="CuentasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="csContpaqFinagil (MySettings)" DbObjectName="ctFINAGILCONEFINAGIL2015.dbo.Cuentas" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Id, RowVersion, Codigo, Nombre, NomIdioma, Tipo, EsBaja, CtaMayor, CtaEfectivo, FechaRegistro, SistOrigen, IdMoneda, DigAgrup, IdSegNeg, SegNegMovtos, Afectable, TimeStamp, IdRubro, Consume, IdAgrupadorSAT,                          ConceptosConsume, Codigo + '  ' + Nombre AS nCuenta
+FROM            Cuentas</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="RowVersion" DataSetColumn="RowVersion" />
+              <Mapping SourceColumn="Codigo" DataSetColumn="Codigo" />
+              <Mapping SourceColumn="Nombre" DataSetColumn="Nombre" />
+              <Mapping SourceColumn="NomIdioma" DataSetColumn="NomIdioma" />
+              <Mapping SourceColumn="Tipo" DataSetColumn="Tipo" />
+              <Mapping SourceColumn="EsBaja" DataSetColumn="EsBaja" />
+              <Mapping SourceColumn="CtaMayor" DataSetColumn="CtaMayor" />
+              <Mapping SourceColumn="CtaEfectivo" DataSetColumn="CtaEfectivo" />
+              <Mapping SourceColumn="FechaRegistro" DataSetColumn="FechaRegistro" />
+              <Mapping SourceColumn="SistOrigen" DataSetColumn="SistOrigen" />
+              <Mapping SourceColumn="IdMoneda" DataSetColumn="IdMoneda" />
+              <Mapping SourceColumn="DigAgrup" DataSetColumn="DigAgrup" />
+              <Mapping SourceColumn="IdSegNeg" DataSetColumn="IdSegNeg" />
+              <Mapping SourceColumn="SegNegMovtos" DataSetColumn="SegNegMovtos" />
+              <Mapping SourceColumn="Afectable" DataSetColumn="Afectable" />
+              <Mapping SourceColumn="TimeStamp" DataSetColumn="TimeStamp" />
+              <Mapping SourceColumn="IdRubro" DataSetColumn="IdRubro" />
+              <Mapping SourceColumn="Consume" DataSetColumn="Consume" />
+              <Mapping SourceColumn="IdAgrupadorSAT" DataSetColumn="IdAgrupadorSAT" />
+              <Mapping SourceColumn="ConceptosConsume" DataSetColumn="ConceptosConsume" />
+              <Mapping SourceColumn="nCuenta" DataSetColumn="nCuenta" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="contpaq" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="contpaq" msprop:Generator_UserDSName="contpaq">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Cuentas" msprop:Generator_TableClassName="CuentasDataTable" msprop:Generator_TableVarName="tableCuentas" msprop:Generator_RowChangedName="CuentasRowChanged" msprop:Generator_TablePropName="Cuentas" msprop:Generator_RowDeletingName="CuentasRowDeleting" msprop:Generator_RowChangingName="CuentasRowChanging" msprop:Generator_RowEvHandlerName="CuentasRowChangeEventHandler" msprop:Generator_RowDeletedName="CuentasRowDeleted" msprop:Generator_RowClassName="CuentasRow" msprop:Generator_UserTableName="Cuentas" msprop:Generator_RowEvArgName="CuentasRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="RowVersion" msprop:Generator_ColumnVarNameInTable="columnRowVersion" msprop:Generator_ColumnPropNameInRow="RowVersion" msprop:Generator_ColumnPropNameInTable="RowVersionColumn" msprop:Generator_UserColumnName="RowVersion" type="xs:int" minOccurs="0" />
+              <xs:element name="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_UserColumnName="Codigo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" msprop:Generator_UserColumnName="Nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NomIdioma" msprop:Generator_ColumnVarNameInTable="columnNomIdioma" msprop:Generator_ColumnPropNameInRow="NomIdioma" msprop:Generator_ColumnPropNameInTable="NomIdiomaColumn" msprop:Generator_UserColumnName="NomIdioma" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tipo" msprop:Generator_ColumnVarNameInTable="columnTipo" msprop:Generator_ColumnPropNameInRow="Tipo" msprop:Generator_ColumnPropNameInTable="TipoColumn" msprop:Generator_UserColumnName="Tipo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EsBaja" msprop:Generator_ColumnVarNameInTable="columnEsBaja" msprop:Generator_ColumnPropNameInRow="EsBaja" msprop:Generator_ColumnPropNameInTable="EsBajaColumn" msprop:Generator_UserColumnName="EsBaja" type="xs:boolean" minOccurs="0" />
+              <xs:element name="CtaMayor" msprop:Generator_ColumnVarNameInTable="columnCtaMayor" msprop:Generator_ColumnPropNameInRow="CtaMayor" msprop:Generator_ColumnPropNameInTable="CtaMayorColumn" msprop:Generator_UserColumnName="CtaMayor" type="xs:int" minOccurs="0" />
+              <xs:element name="CtaEfectivo" msprop:Generator_ColumnVarNameInTable="columnCtaEfectivo" msprop:Generator_ColumnPropNameInRow="CtaEfectivo" msprop:Generator_ColumnPropNameInTable="CtaEfectivoColumn" msprop:Generator_UserColumnName="CtaEfectivo" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FechaRegistro" msprop:Generator_ColumnVarNameInTable="columnFechaRegistro" msprop:Generator_ColumnPropNameInRow="FechaRegistro" msprop:Generator_ColumnPropNameInTable="FechaRegistroColumn" msprop:Generator_UserColumnName="FechaRegistro" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SistOrigen" msprop:Generator_ColumnVarNameInTable="columnSistOrigen" msprop:Generator_ColumnPropNameInRow="SistOrigen" msprop:Generator_ColumnPropNameInTable="SistOrigenColumn" msprop:Generator_UserColumnName="SistOrigen" type="xs:int" minOccurs="0" />
+              <xs:element name="IdMoneda" msprop:Generator_ColumnVarNameInTable="columnIdMoneda" msprop:Generator_ColumnPropNameInRow="IdMoneda" msprop:Generator_ColumnPropNameInTable="IdMonedaColumn" msprop:Generator_UserColumnName="IdMoneda" type="xs:int" minOccurs="0" />
+              <xs:element name="DigAgrup" msprop:Generator_ColumnVarNameInTable="columnDigAgrup" msprop:Generator_ColumnPropNameInRow="DigAgrup" msprop:Generator_ColumnPropNameInTable="DigAgrupColumn" msprop:Generator_UserColumnName="DigAgrup" type="xs:int" minOccurs="0" />
+              <xs:element name="IdSegNeg" msprop:Generator_ColumnVarNameInTable="columnIdSegNeg" msprop:Generator_ColumnPropNameInRow="IdSegNeg" msprop:Generator_ColumnPropNameInTable="IdSegNegColumn" msprop:Generator_UserColumnName="IdSegNeg" type="xs:int" minOccurs="0" />
+              <xs:element name="SegNegMovtos" msprop:Generator_ColumnVarNameInTable="columnSegNegMovtos" msprop:Generator_ColumnPropNameInRow="SegNegMovtos" msprop:Generator_ColumnPropNameInTable="SegNegMovtosColumn" msprop:Generator_UserColumnName="SegNegMovtos" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Afectable" msprop:Generator_ColumnVarNameInTable="columnAfectable" msprop:Generator_ColumnPropNameInRow="Afectable" msprop:Generator_ColumnPropNameInTable="AfectableColumn" msprop:Generator_UserColumnName="Afectable" type="xs:int" minOccurs="0" />
+              <xs:element name="TimeStamp" msprop:Generator_ColumnVarNameInTable="columnTimeStamp" msprop:Generator_ColumnPropNameInRow="TimeStamp" msprop:Generator_ColumnPropNameInTable="TimeStampColumn" msprop:Generator_UserColumnName="TimeStamp" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdRubro" msprop:Generator_ColumnVarNameInTable="columnIdRubro" msprop:Generator_ColumnPropNameInRow="IdRubro" msprop:Generator_ColumnPropNameInTable="IdRubroColumn" msprop:Generator_UserColumnName="IdRubro" type="xs:int" minOccurs="0" />
+              <xs:element name="Consume" msprop:Generator_ColumnVarNameInTable="columnConsume" msprop:Generator_ColumnPropNameInRow="Consume" msprop:Generator_ColumnPropNameInTable="ConsumeColumn" msprop:Generator_UserColumnName="Consume" type="xs:int" minOccurs="0" />
+              <xs:element name="IdAgrupadorSAT" msprop:Generator_ColumnVarNameInTable="columnIdAgrupadorSAT" msprop:Generator_ColumnPropNameInRow="IdAgrupadorSAT" msprop:Generator_ColumnPropNameInTable="IdAgrupadorSATColumn" msprop:Generator_UserColumnName="IdAgrupadorSAT" type="xs:int" minOccurs="0" />
+              <xs:element name="ConceptosConsume" msprop:Generator_ColumnVarNameInTable="columnConceptosConsume" msprop:Generator_ColumnPropNameInRow="ConceptosConsume" msprop:Generator_ColumnPropNameInTable="ConceptosConsumeColumn" msprop:Generator_UserColumnName="ConceptosConsume" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nCuenta" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnnCuenta" msprop:Generator_ColumnPropNameInRow="nCuenta" msprop:Generator_ColumnPropNameInTable="nCuentaColumn" msprop:Generator_UserColumnName="nCuenta" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="82" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Cuentas" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
