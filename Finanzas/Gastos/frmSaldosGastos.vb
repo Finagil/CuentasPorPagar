@@ -14,7 +14,7 @@ Public Class frmSaldosGastos
 
     Private Sub Vw_CXP_SaldoComprobacionGastosDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Vw_CXP_SaldoComprobacionGastosDataGridView.CellContentClick
         If e.ColumnIndex = 0 Then
-            System.IO.File.Copy("\\server-raid2\TmpFinagil\CXP\" & varGlobal_IdEmpresa & "-" & Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf", "C:\Files\" & varGlobal_IdEmpresa & "-" & Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf", True)
+            System.IO.File.Copy(My.Settings.RutaTmp & "CXP\" & varGlobal_IdEmpresa & "-" & Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf", "C:\Files\" & varGlobal_IdEmpresa & "-" & Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf", True)
             System.Diagnostics.Process.Start("C:\Files\" & varGlobal_IdEmpresa & "-" & Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf")
         ElseIf e.ColumnIndex <> 0 Then
             Dim frmDet As New frmSaldosGastosDetalle

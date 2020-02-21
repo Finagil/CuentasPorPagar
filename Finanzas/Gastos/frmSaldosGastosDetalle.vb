@@ -20,7 +20,7 @@
 
     Private Sub CXP_ComprobGtosDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles CXP_ComprobGtosDataGridView.CellContentClick
         If e.ColumnIndex = 0 Then
-            System.IO.File.Copy("\\SERVER-RAID2\TmpFinagil\GTS\" & varGlobal_IdEmpresa & "-" & CXP_ComprobGtosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf", "C:\Files\" & varGlobal_IdEmpresa & "-" & CXP_ComprobGtosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf", True)
+            System.IO.File.Copy(My.Settings.RutaTmp & "GTS\" & varGlobal_IdEmpresa & "-" & CXP_ComprobGtosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf", "C:\Files\" & varGlobal_IdEmpresa & "-" & CXP_ComprobGtosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf", True)
             System.Diagnostics.Process.Start("C:\Files\" & varGlobal_IdEmpresa & "-" & CXP_ComprobGtosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf")
         End If
     End Sub

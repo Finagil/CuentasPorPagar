@@ -112,7 +112,7 @@
     End Sub
 
     Private Sub lklFolSolicitud_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lklFolSolicitud.LinkClicked
-        System.IO.File.Copy("\\server-raid2\TmpFinagil\CXP\" & varGlobal_IdEmpresa & "-" & lklFolSolicitud.Text & ".pdf", "C:\Files\" & varGlobal_IdEmpresa & "-" & lklFolSolicitud.Text & ".pdf", True)
+        System.IO.File.Copy(My.Settings.RutaTmp & "CXP\" & varGlobal_IdEmpresa & "-" & lklFolSolicitud.Text & ".pdf", "C:\Files\" & varGlobal_IdEmpresa & "-" & lklFolSolicitud.Text & ".pdf", True)
         System.Diagnostics.Process.Start("C:\Files\" & varGlobal_IdEmpresa & "-" & lklFolSolicitud.Text & ".pdf")
     End Sub
 
