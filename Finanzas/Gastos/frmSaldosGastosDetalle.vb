@@ -12,7 +12,7 @@
 
     Private Sub frmSaldosGastosDetalle_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_ComprobGtos' Puede moverla o quitarla según sea necesario.
-        Me.CXP_ComprobGtosTableAdapter.DetalleComprobacion_FillBy(Me.DsProduction.CXP_ComprobGtos, varFolioSol, varGlobal_IdEmpresa)
+        Me.CXP_ComprobGtosTableAdapter.DetalleComprobacion_FillBy(Me.DsProduction.CXP_ComprobGtos, varFolioSol, CDec(varGlobal_IdEmpresa))
         lblImpDepositado.Text = varImpDepsotitado.ToString("c")
         lblImpComprobado.Text = varImpComprobado.ToString("c")
         lblPorComprobar.Text = varImpPorComprobar.ToString("c")
@@ -20,7 +20,7 @@
 
     Private Sub CXP_ComprobGtosDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles CXP_ComprobGtosDataGridView.CellContentClick
         If e.ColumnIndex = 0 Then
-            System.IO.File.Copy(My.Settings.RutaTMP & "GTS\" & varGlobal_IdEmpresa & "-" & CXP_ComprobGtosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf", "C:\Files\" & varGlobal_IdEmpresa & "-" & CXP_ComprobGtosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf", True)
+            System.IO.File.Copy("\\SERVER-RAID2\TmpFinagil\GTS\" & varGlobal_IdEmpresa & "-" & CXP_ComprobGtosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf", "C:\Files\" & varGlobal_IdEmpresa & "-" & CXP_ComprobGtosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf", True)
             System.Diagnostics.Process.Start("C:\Files\" & varGlobal_IdEmpresa & "-" & CXP_ComprobGtosDataGridView.Rows(e.RowIndex).Cells(0).Value & ".pdf")
         End If
     End Sub

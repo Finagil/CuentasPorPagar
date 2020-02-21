@@ -6,6 +6,7 @@ Imports System.IO
 Imports System.Collections.Specialized
 Imports System.Web
 Imports System.Deployment.Application
+Imports System.ComponentModel
 
 Public Class mdicuentasPorPagar
     Public varGlUser As String
@@ -18,6 +19,8 @@ Public Class mdicuentasPorPagar
     Dim dtPerfiles As New DataTable
     Dim drPerfiles As DataRow
     Dim USUARIOX As String
+    Public CuentasTableAdapterG As New contpaqTableAdapters.CuentasTableAdapter
+    Public dtCuentasG As New contpaq.CuentasDataTable
 
 
     Private Sub PerfilesToolStripMenuItem_Click(sender As Object, e As EventArgs)
@@ -30,6 +33,11 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
+        lfrInicio.Close()
+
+        For Each Formulario As Form In Me.MdiChildren
+            Formulario.Close()
+        Next
         Me.Close()
     End Sub
 
@@ -290,7 +298,16 @@ Public Class mdicuentasPorPagar
         '        Next
         '    End If
         'End If
+
+
+        'If varGlobal_IdEmpresa = "24" Then
+        '    CuentasTableAdapterG.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctCONEARFIN;Persist Security Info=True;User ID=finagil;Password=finagil"
+        'Else
+        '    CuentasTableAdapterG.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Security Info=True;User ID=finagil;Password=finagil"
+        'End If
+        'CuentasTableAdapterG.Fill(dtCuentasG)
     End Sub
+
 
     Private Sub NombrePerfilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NombrePerfilesToolStripMenuItem.Click
         Me.Cursor = Cursors.WaitCursor
@@ -303,6 +320,9 @@ Public Class mdicuentasPorPagar
 
     Private Sub mdicuentasPorPagar_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         lfrInicio.Close()
+        For Each Formulario As Form In Me.MdiChildren
+            Formulario.Close()
+        Next
     End Sub
 
     Private Sub ConceptosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConceptosToolStripMenuItem.Click
@@ -326,8 +346,8 @@ Public Class mdicuentasPorPagar
     Private Sub DiariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DiariosToolStripMenuItem.Click
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
-        frmPolizasDiario.MdiParent = Me
-        frmPolizasDiario.Show()
+        frmDiario.MdiParent = Me
+        frmDiario.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub
@@ -454,4 +474,5 @@ Public Class mdicuentasPorPagar
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub
+
 End Class

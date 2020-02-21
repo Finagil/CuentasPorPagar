@@ -44,6 +44,7 @@
 
 
         actualiza()
+        actualizaP()
     End Sub
 
     Private Sub ObtCtasEgreso_FillByToolStripButton_Click(sender As Object, e As EventArgs)
@@ -67,29 +68,69 @@
             cont = cont + 1
         Next
 
-        taImpuestoConcepto.Insert(cmbImpuesto.SelectedValue, IdConceptoTextBox.Text)
+        taImpuestoConcepto.Insert(cmbImpuesto.SelectedValue, IdConceptoTextBox.Text, "S")
         actualiza()
+
         'dgvImpuestos.Rows.Add(cmbImpuesto.SelectedValue, cmbImpuesto.Text, taImpuesto.ObtCuenta_ScalarQuery(cmbImpuesto.SelectedValue), "Eliminar")
     End Sub
 
     Private Sub actualiza()
         Dim dt As New dsProduction.Vw_CXP_ImpConDataTable
+        'Dim taCtas As New contpaqTableAdapters.CuentasTableAdapter
+        Dim dtCtas As New contpaq.CuentasDataTable
+        Dim rowCtas As contpaq.CuentasRow
 
         If NombreTextBox.Text <> "" And IdConceptoTextBox.Text <> "-1" Then
             dgvImpuestos.Rows.Clear()
-            taImpCon.ObtImpuestos_FillBy(dt, IdConceptoTextBox.Text.Trim)
+            taImpCon.ObtImpuestos_FillBy(dt, IdConceptoTextBox.Text.Trim, "S")
             Dim cont As Integer = 0
             For Each row As dsProduction.Vw_CXP_ImpConRow In dt
-                dgvImpuestos.Rows.Add()
-                dgvImpuestos.Item(0, cont).Value = row.idImpCon
-                dgvImpuestos.Item(1, cont).Value = row.descripcionLarga
-                dgvImpuestos.Item(2, cont).Value = row.cuenta
-                dgvImpuestos.Item(3, cont).Value = "Eliminar"
-                dgvImpuestos.Item(4, cont).Value = row.idImpuesto
-                cont += 1
+
+                CuentasTableAdapter.DatosCtas_FillBy(dtCtas, row.ctaDeImpuestos)
+                If dtCtas.Rows.Count >= 1 Then
+                    rowCtas = dtCtas.Rows(0)
+
+                    dgvImpuestos.Rows.Add()
+                    dgvImpuestos.Item(0, cont).Value = row.idImpCon
+                    dgvImpuestos.Item(1, cont).Value = row.descripcionLarga
+                    dgvImpuestos.Item(2, cont).Value = rowCtas.Codigo.ToString.Insert(4, "-").Insert(7, "-").Insert(10, "-").Insert(15, "-") 'row.cuenta
+                    dgvImpuestos.Item(3, cont).Value = "Eliminar"
+                    dgvImpuestos.Item(4, cont).Value = row.idImpuesto
+                    cont += 1
+                End If
             Next
         Else
             dgvImpuestos.Rows.Clear()
+        End If
+    End Sub
+
+    Private Sub actualizaP()
+        Dim dt As New dsProduction.Vw_CXP_ImpConDataTable
+        'Dim taCtas As New contpaqTableAdapters.CuentasTableAdapter
+        Dim dtCtas As New contpaq.CuentasDataTable
+        Dim rowCtas As contpaq.CuentasRow
+
+        If NombreTextBox.Text <> "" And IdConceptoTextBox.Text <> "-1" Then
+            dgvImpuestosP.Rows.Clear()
+            taImpCon.ObtImpuestos_FillBy(dt, IdConceptoTextBox.Text.Trim, "P")
+            Dim cont As Integer = 0
+            For Each row As dsProduction.Vw_CXP_ImpConRow In dt
+
+                CuentasTableAdapter.DatosCtas_FillBy(dtCtas, row.ctaDeImpuestos)
+                If dtCtas.Rows.Count >= 1 Then
+                    rowCtas = dtCtas.Rows(0)
+
+                    dgvImpuestosP.Rows.Add()
+                    dgvImpuestosP.Item(0, cont).Value = row.idImpCon
+                    dgvImpuestosP.Item(1, cont).Value = row.descripcionLarga
+                    dgvImpuestosP.Item(2, cont).Value = rowCtas.Codigo.ToString.Insert(4, "-").Insert(7, "-").Insert(10, "-").Insert(15, "-") 'row.cuenta
+                    dgvImpuestosP.Item(3, cont).Value = "Eliminar"
+                    dgvImpuestosP.Item(4, cont).Value = row.idImpuesto
+                    cont += 1
+                End If
+            Next
+        Else
+            dgvImpuestosP.Rows.Clear()
         End If
     End Sub
 
@@ -98,6 +139,13 @@
             taImpuestoConcepto.DeleteQuery(dgvImpuestos.Item(0, e.RowIndex).Value)
         End If
         actualiza()
+    End Sub
+
+    Private Sub dgvImpuestosP_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvImpuestosP.CellContentClick
+        If e.ColumnIndex = 3 Then
+            taImpuestoConcepto.DeleteQuery(dgvImpuestosP.Item(0, e.RowIndex).Value)
+        End If
+        actualizaP()
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
@@ -194,5 +242,22 @@
 
     Private Sub NombreTextBox_TextChanged(sender As Object, e As EventArgs) Handles NombreTextBox.TextChanged
         actualiza()
+    End Sub
+
+    Private Sub btnAgregarP_Click(sender As Object, e As EventArgs) Handles btnAgregarP.Click
+        Dim valor As Integer = cmbImpuestosP.SelectedValue
+        Dim cont As Integer = 0
+
+        For Each rows As DataGridViewRow In dgvImpuestosP.Rows
+            If dgvImpuestosP.Item(4, cont).Value = valor Then
+                MsgBox("Ya se encuentra el impuesto actual...", MsgBoxStyle.Critical)
+                Exit Sub
+            End If
+            cont = cont + 1
+        Next
+
+        taImpuestoConcepto.Insert(cmbImpuestosP.SelectedValue, IdConceptoTextBox.Text, "P")
+        actualizaP()
+        'dgvImpuestos.Rows.Add(cmbImpuesto.SelectedValue, cmbImpuesto.Text, taImpuesto.ObtCuenta_ScalarQuery(cmbImpuesto.SelectedValue), "Eliminar")
     End Sub
 End Class

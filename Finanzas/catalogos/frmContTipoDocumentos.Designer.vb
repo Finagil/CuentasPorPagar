@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmContTipoDocumentos
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmContTipoDocumentos
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ClaveTipoDocumentoLabel As System.Windows.Forms.Label
@@ -28,7 +28,6 @@ Partial Class frmContTipoDocumentos
         Dim FechaRegistroLabel As System.Windows.Forms.Label
         Dim DocumentoDeLabel As System.Windows.Forms.Label
         Dim FolioInicialLabel As System.Windows.Forms.Label
-        Dim FolioFinalLabel As System.Windows.Forms.Label
         Dim FolioActualLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmContTipoDocumentos))
         Me.DsProduction = New cuentasPorPagar.dsProduction()
@@ -52,7 +51,6 @@ Partial Class frmContTipoDocumentos
         Me.NombreTextBox = New System.Windows.Forms.TextBox()
         Me.FechaRegistroDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.FolioInicialTextBox = New System.Windows.Forms.TextBox()
-        Me.FolioFinalTextBox = New System.Windows.Forms.TextBox()
         Me.FolioActualTextBox = New System.Windows.Forms.TextBox()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
@@ -61,7 +59,6 @@ Partial Class frmContTipoDocumentos
         FechaRegistroLabel = New System.Windows.Forms.Label()
         DocumentoDeLabel = New System.Windows.Forms.Label()
         FolioInicialLabel = New System.Windows.Forms.Label()
-        FolioFinalLabel = New System.Windows.Forms.Label()
         FolioActualLabel = New System.Windows.Forms.Label()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_tipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -108,25 +105,16 @@ Partial Class frmContTipoDocumentos
         'FolioInicialLabel
         '
         FolioInicialLabel.AutoSize = True
-        FolioInicialLabel.Location = New System.Drawing.Point(50, 82)
+        FolioInicialLabel.Location = New System.Drawing.Point(50, 85)
         FolioInicialLabel.Name = "FolioInicialLabel"
         FolioInicialLabel.Size = New System.Drawing.Size(62, 13)
         FolioInicialLabel.TabIndex = 15
         FolioInicialLabel.Text = "Folio Inicial:"
         '
-        'FolioFinalLabel
-        '
-        FolioFinalLabel.AutoSize = True
-        FolioFinalLabel.Location = New System.Drawing.Point(55, 108)
-        FolioFinalLabel.Name = "FolioFinalLabel"
-        FolioFinalLabel.Size = New System.Drawing.Size(57, 13)
-        FolioFinalLabel.TabIndex = 17
-        FolioFinalLabel.Text = "Folio Final:"
-        '
         'FolioActualLabel
         '
         FolioActualLabel.AutoSize = True
-        FolioActualLabel.Location = New System.Drawing.Point(47, 134)
+        FolioActualLabel.Location = New System.Drawing.Point(47, 111)
         FolioActualLabel.Name = "FolioActualLabel"
         FolioActualLabel.Size = New System.Drawing.Size(65, 13)
         FolioActualLabel.TabIndex = 19
@@ -149,6 +137,7 @@ Partial Class frmContTipoDocumentos
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CFDI_Estado_NominaTableAdapter = Nothing
         Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
@@ -157,21 +146,29 @@ Partial Class frmContTipoDocumentos
         Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ComprobGtosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasProvTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_RegContTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoConceptoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoCuentaContableTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Me.CXP_tipoDeDocumentoTableAdapter
         Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
         Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdi2TableAdapter = Nothing
         Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
         Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
@@ -316,23 +313,15 @@ Partial Class frmContTipoDocumentos
         'FolioInicialTextBox
         '
         Me.FolioInicialTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "folioInicial", True))
-        Me.FolioInicialTextBox.Location = New System.Drawing.Point(115, 79)
+        Me.FolioInicialTextBox.Location = New System.Drawing.Point(115, 82)
         Me.FolioInicialTextBox.Name = "FolioInicialTextBox"
         Me.FolioInicialTextBox.Size = New System.Drawing.Size(100, 20)
         Me.FolioInicialTextBox.TabIndex = 16
         '
-        'FolioFinalTextBox
-        '
-        Me.FolioFinalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "folioFinal", True))
-        Me.FolioFinalTextBox.Location = New System.Drawing.Point(115, 105)
-        Me.FolioFinalTextBox.Name = "FolioFinalTextBox"
-        Me.FolioFinalTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.FolioFinalTextBox.TabIndex = 18
-        '
         'FolioActualTextBox
         '
         Me.FolioActualTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "folioActual", True))
-        Me.FolioActualTextBox.Location = New System.Drawing.Point(115, 131)
+        Me.FolioActualTextBox.Location = New System.Drawing.Point(115, 108)
         Me.FolioActualTextBox.Name = "FolioActualTextBox"
         Me.FolioActualTextBox.ReadOnly = True
         Me.FolioActualTextBox.Size = New System.Drawing.Size(100, 20)
@@ -367,8 +356,6 @@ Partial Class frmContTipoDocumentos
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(FolioActualLabel)
         Me.Controls.Add(Me.FolioActualTextBox)
-        Me.Controls.Add(FolioFinalLabel)
-        Me.Controls.Add(Me.FolioFinalTextBox)
         Me.Controls.Add(FolioInicialLabel)
         Me.Controls.Add(Me.FolioInicialTextBox)
         Me.Controls.Add(DocumentoDeLabel)
@@ -413,7 +400,6 @@ Partial Class frmContTipoDocumentos
     Friend WithEvents NombreTextBox As TextBox
     Friend WithEvents FechaRegistroDateTimePicker As DateTimePicker
     Friend WithEvents FolioInicialTextBox As TextBox
-    Friend WithEvents FolioFinalTextBox As TextBox
     Friend WithEvents FolioActualTextBox As TextBox
     Friend WithEvents btnSalir As Button
     Friend WithEvents ComboBox1 As ComboBox

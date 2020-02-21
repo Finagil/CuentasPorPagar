@@ -29,8 +29,5 @@
     <Setting Name="nas" Type="System.String" Scope="User">
       <Value Profile="(Default)">\\server</Value>
     </Setting>
-    <Setting Name="RutaTMP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\server-nas\TmpFinagil\</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

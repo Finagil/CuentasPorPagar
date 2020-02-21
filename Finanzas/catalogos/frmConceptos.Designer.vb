@@ -30,6 +30,7 @@ Partial Class frmConceptos
         Dim IdConceptoLabel As System.Windows.Forms.Label
         Dim Label3 As System.Windows.Forms.Label
         Dim Label4 As System.Windows.Forms.Label
+        Dim Label2 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConceptos))
         Me.CXP_ConceptosBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
@@ -55,6 +56,11 @@ Partial Class frmConceptos
         Me.CXPTipoGastoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.dgvImpuestos = New System.Windows.Forms.DataGridView()
+        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.impuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.eliminar = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.idImpuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.cmbCtaAbonoSol = New System.Windows.Forms.ComboBox()
         Me.CuentasBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
@@ -89,11 +95,16 @@ Partial Class frmConceptos
         Me.CuentasTableAdapter = New cuentasPorPagar.contpaqTableAdapters.CuentasTableAdapter()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
         Me.btnBuscar = New System.Windows.Forms.Button()
-        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.impuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.eliminar = New System.Windows.Forms.DataGridViewLinkColumn()
-        Me.idImpuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OmisionECCheckBox = New System.Windows.Forms.CheckBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.dgvImpuestosP = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewLinkColumn1 = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cmbImpuestosP = New System.Windows.Forms.ComboBox()
+        Me.btnAgregarP = New System.Windows.Forms.Button()
         NombreLabel = New System.Windows.Forms.Label()
         ImpuestoLabel = New System.Windows.Forms.Label()
         CuentaProvLabel = New System.Windows.Forms.Label()
@@ -101,6 +112,7 @@ Partial Class frmConceptos
         IdConceptoLabel = New System.Windows.Forms.Label()
         Label3 = New System.Windows.Forms.Label()
         Label4 = New System.Windows.Forms.Label()
+        Label2 = New System.Windows.Forms.Label()
         CType(Me.CXP_ConceptosBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CXP_ConceptosBindingNavigator.SuspendLayout()
         CType(Me.CXP_ConceptosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -123,6 +135,8 @@ Partial Class frmConceptos
         CType(Me.ContpaqBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CuentasBindingSource3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        CType(Me.dgvImpuestosP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NombreLabel
@@ -164,7 +178,7 @@ Partial Class frmConceptos
         'IdConceptoLabel
         '
         IdConceptoLabel.AutoSize = True
-        IdConceptoLabel.Location = New System.Drawing.Point(25, 334)
+        IdConceptoLabel.Location = New System.Drawing.Point(23, 549)
         IdConceptoLabel.Name = "IdConceptoLabel"
         IdConceptoLabel.Size = New System.Drawing.Size(68, 13)
         IdConceptoLabel.TabIndex = 26
@@ -188,6 +202,15 @@ Partial Class frmConceptos
         Label4.TabIndex = 27
         Label4.Text = "Cuenta Cargo:"
         '
+        'Label2
+        '
+        Label2.AutoSize = True
+        Label2.Location = New System.Drawing.Point(18, 26)
+        Label2.Name = "Label2"
+        Label2.Size = New System.Drawing.Size(53, 13)
+        Label2.TabIndex = 7
+        Label2.Text = "Impuesto:"
+        '
         'CXP_ConceptosBindingNavigator
         '
         Me.CXP_ConceptosBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
@@ -202,7 +225,7 @@ Partial Class frmConceptos
         Me.CXP_ConceptosBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.CXP_ConceptosBindingNavigator.Name = "CXP_ConceptosBindingNavigator"
         Me.CXP_ConceptosBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.CXP_ConceptosBindingNavigator.Size = New System.Drawing.Size(989, 25)
+        Me.CXP_ConceptosBindingNavigator.Size = New System.Drawing.Size(997, 25)
         Me.CXP_ConceptosBindingNavigator.TabIndex = 0
         Me.CXP_ConceptosBindingNavigator.Text = "BindingNavigator1"
         '
@@ -365,7 +388,7 @@ Partial Class frmConceptos
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(901, 324)
+        Me.btnSalir.Location = New System.Drawing.Point(899, 539)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 7
@@ -383,8 +406,45 @@ Partial Class frmConceptos
         Me.dgvImpuestos.Name = "dgvImpuestos"
         Me.dgvImpuestos.ReadOnly = True
         Me.dgvImpuestos.RowHeadersVisible = False
-        Me.dgvImpuestos.Size = New System.Drawing.Size(460, 164)
+        Me.dgvImpuestos.Size = New System.Drawing.Size(460, 108)
         Me.dgvImpuestos.TabIndex = 6
+        '
+        'id
+        '
+        Me.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.id.HeaderText = "Id"
+        Me.id.Name = "id"
+        Me.id.ReadOnly = True
+        Me.id.Width = 41
+        '
+        'impuesto
+        '
+        Me.impuesto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.impuesto.HeaderText = "Impuesto"
+        Me.impuesto.Name = "impuesto"
+        Me.impuesto.ReadOnly = True
+        Me.impuesto.Width = 75
+        '
+        'cuenta
+        '
+        Me.cuenta.HeaderText = "Cuenta"
+        Me.cuenta.Name = "cuenta"
+        Me.cuenta.ReadOnly = True
+        Me.cuenta.Width = 200
+        '
+        'eliminar
+        '
+        Me.eliminar.HeaderText = "Eliminar"
+        Me.eliminar.Name = "eliminar"
+        Me.eliminar.ReadOnly = True
+        Me.eliminar.Width = 50
+        '
+        'idImpuesto
+        '
+        Me.idImpuesto.HeaderText = "IdImpuesto"
+        Me.idImpuesto.Name = "idImpuesto"
+        Me.idImpuesto.ReadOnly = True
+        Me.idImpuesto.Visible = False
         '
         'btnAgregar
         '
@@ -422,7 +482,7 @@ Partial Class frmConceptos
         'IdConceptoTextBox
         '
         Me.IdConceptoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ConceptosBindingSource, "idConcepto", True))
-        Me.IdConceptoTextBox.Location = New System.Drawing.Point(98, 331)
+        Me.IdConceptoTextBox.Location = New System.Drawing.Point(96, 546)
         Me.IdConceptoTextBox.Name = "IdConceptoTextBox"
         Me.IdConceptoTextBox.ReadOnly = True
         Me.IdConceptoTextBox.Size = New System.Drawing.Size(100, 20)
@@ -456,6 +516,7 @@ Partial Class frmConceptos
         Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ComprobGtosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Me.CXP_ConceptosTableAdapter
+        Me.TableAdapterManager.CXP_CuentasBancariasProvTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
@@ -533,7 +594,7 @@ Partial Class frmConceptos
         Me.GroupBox1.Size = New System.Drawing.Size(468, 108)
         Me.GroupBox1.TabIndex = 31
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Solicitu de pago:"
+        Me.GroupBox1.Text = "Solicitud de pago:"
         '
         'lnkEliminar4
         '
@@ -563,7 +624,7 @@ Partial Class frmConceptos
         Me.GroupBox2.Controls.Add(Label4)
         Me.GroupBox2.Controls.Add(Me.cmbCtaCargoPago)
         Me.GroupBox2.Controls.Add(Me.cmbCtaAbonoPago)
-        Me.GroupBox2.Location = New System.Drawing.Point(507, 189)
+        Me.GroupBox2.Location = New System.Drawing.Point(508, 272)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(470, 113)
         Me.GroupBox2.TabIndex = 32
@@ -639,17 +700,17 @@ Partial Class frmConceptos
         Me.GroupBox3.Controls.Add(ImpuestoLabel)
         Me.GroupBox3.Controls.Add(Me.cmbImpuesto)
         Me.GroupBox3.Controls.Add(Me.btnAgregar)
-        Me.GroupBox3.Location = New System.Drawing.Point(11, 66)
+        Me.GroupBox3.Location = New System.Drawing.Point(11, 75)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(489, 236)
+        Me.GroupBox3.Size = New System.Drawing.Size(489, 179)
         Me.GroupBox3.TabIndex = 33
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Impuestos:"
+        Me.GroupBox3.Text = "Impuestos Solicitud:"
         '
         'EventoContableCheckBox
         '
         Me.EventoContableCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.CXP_ConceptosBindingSource, "eventoContable", True))
-        Me.EventoContableCheckBox.Location = New System.Drawing.Point(518, 318)
+        Me.EventoContableCheckBox.Location = New System.Drawing.Point(516, 533)
         Me.EventoContableCheckBox.Name = "EventoContableCheckBox"
         Me.EventoContableCheckBox.Size = New System.Drawing.Size(173, 37)
         Me.EventoContableCheckBox.TabIndex = 30
@@ -676,48 +737,108 @@ Partial Class frmConceptos
         Me.btnBuscar.Text = "Buscar"
         Me.btnBuscar.UseVisualStyleBackColor = True
         '
-        'id
+        'OmisionECCheckBox
         '
-        Me.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.id.HeaderText = "Id"
-        Me.id.Name = "id"
-        Me.id.ReadOnly = True
-        Me.id.Width = 41
+        Me.OmisionECCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.CXP_ConceptosBindingSource, "omisionEC", True))
+        Me.OmisionECCheckBox.Location = New System.Drawing.Point(638, 539)
+        Me.OmisionECCheckBox.Name = "OmisionECCheckBox"
+        Me.OmisionECCheckBox.Size = New System.Drawing.Size(158, 24)
+        Me.OmisionECCheckBox.TabIndex = 36
+        Me.OmisionECCheckBox.Text = "Omite Evento Contable"
+        Me.OmisionECCheckBox.UseVisualStyleBackColor = True
         '
-        'impuesto
+        'GroupBox4
         '
-        Me.impuesto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.impuesto.HeaderText = "Impuesto"
-        Me.impuesto.Name = "impuesto"
-        Me.impuesto.ReadOnly = True
-        Me.impuesto.Width = 75
+        Me.GroupBox4.Controls.Add(Me.dgvImpuestosP)
+        Me.GroupBox4.Controls.Add(Label2)
+        Me.GroupBox4.Controls.Add(Me.cmbImpuestosP)
+        Me.GroupBox4.Controls.Add(Me.btnAgregarP)
+        Me.GroupBox4.Location = New System.Drawing.Point(11, 272)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(489, 179)
+        Me.GroupBox4.TabIndex = 34
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Impuestos Pago:"
         '
-        'cuenta
+        'dgvImpuestosP
         '
-        Me.cuenta.HeaderText = "Cuenta"
-        Me.cuenta.Name = "cuenta"
-        Me.cuenta.ReadOnly = True
-        Me.cuenta.Width = 200
+        Me.dgvImpuestosP.AllowUserToAddRows = False
+        Me.dgvImpuestosP.AllowUserToDeleteRows = False
+        Me.dgvImpuestosP.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.dgvImpuestosP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvImpuestosP.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewLinkColumn1, Me.DataGridViewTextBoxColumn4})
+        Me.dgvImpuestosP.Location = New System.Drawing.Point(12, 55)
+        Me.dgvImpuestosP.Name = "dgvImpuestosP"
+        Me.dgvImpuestosP.ReadOnly = True
+        Me.dgvImpuestosP.RowHeadersVisible = False
+        Me.dgvImpuestosP.Size = New System.Drawing.Size(460, 108)
+        Me.dgvImpuestosP.TabIndex = 6
         '
-        'eliminar
+        'DataGridViewTextBoxColumn1
         '
-        Me.eliminar.HeaderText = "Eliminar"
-        Me.eliminar.Name = "eliminar"
-        Me.eliminar.ReadOnly = True
-        Me.eliminar.Width = 50
+        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Id"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 41
         '
-        'idImpuesto
+        'DataGridViewTextBoxColumn2
         '
-        Me.idImpuesto.HeaderText = "IdImpuesto"
-        Me.idImpuesto.Name = "idImpuesto"
-        Me.idImpuesto.ReadOnly = True
-        Me.idImpuesto.Visible = False
+        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Impuesto"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 75
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Cuenta"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 200
+        '
+        'DataGridViewLinkColumn1
+        '
+        Me.DataGridViewLinkColumn1.HeaderText = "Eliminar"
+        Me.DataGridViewLinkColumn1.Name = "DataGridViewLinkColumn1"
+        Me.DataGridViewLinkColumn1.ReadOnly = True
+        Me.DataGridViewLinkColumn1.Width = 50
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.HeaderText = "IdImpuesto"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Visible = False
+        '
+        'cmbImpuestosP
+        '
+        Me.cmbImpuestosP.DataSource = Me.CXPImpuestoBindingSource
+        Me.cmbImpuestosP.DisplayMember = "descripcionLarga"
+        Me.cmbImpuestosP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbImpuestosP.FormattingEnabled = True
+        Me.cmbImpuestosP.Location = New System.Drawing.Point(77, 23)
+        Me.cmbImpuestosP.Name = "cmbImpuestosP"
+        Me.cmbImpuestosP.Size = New System.Drawing.Size(327, 21)
+        Me.cmbImpuestosP.TabIndex = 4
+        Me.cmbImpuestosP.ValueMember = "idImpuesto"
+        '
+        'btnAgregarP
+        '
+        Me.btnAgregarP.Location = New System.Drawing.Point(410, 22)
+        Me.btnAgregarP.Name = "btnAgregarP"
+        Me.btnAgregarP.Size = New System.Drawing.Size(62, 23)
+        Me.btnAgregarP.TabIndex = 5
+        Me.btnAgregarP.Text = "Agregar"
+        Me.btnAgregarP.UseVisualStyleBackColor = True
         '
         'frmConceptos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(989, 360)
+        Me.ClientSize = New System.Drawing.Size(997, 575)
+        Me.Controls.Add(Me.GroupBox4)
+        Me.Controls.Add(Me.OmisionECCheckBox)
         Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.GroupBox3)
@@ -759,6 +880,9 @@ Partial Class frmConceptos
         CType(Me.CuentasBindingSource3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
+        CType(Me.dgvImpuestosP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -827,4 +951,14 @@ Partial Class frmConceptos
     Friend WithEvents cuenta As DataGridViewTextBoxColumn
     Friend WithEvents eliminar As DataGridViewLinkColumn
     Friend WithEvents idImpuesto As DataGridViewTextBoxColumn
+    Friend WithEvents OmisionECCheckBox As CheckBox
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents dgvImpuestosP As DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewLinkColumn1 As DataGridViewLinkColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents cmbImpuestosP As ComboBox
+    Friend WithEvents btnAgregarP As Button
 End Class

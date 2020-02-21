@@ -9,4 +9,8 @@
         'VwCXPRegContableBindingSource.Filter = "idTipoDocumento = '" & cmbTipoDeDocumento.SelectedValue & "' AND idEmpresa ='" & varGlobal_IdEmpresa & "'"
         Me.Vw_CXP_RegContableTableAdapter.Fill(Me.DsProduction.Vw_CXP_RegContable, varGlobal_IdEmpresa, cmbTipoDeDocumento.SelectedValue)
     End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
 End Class

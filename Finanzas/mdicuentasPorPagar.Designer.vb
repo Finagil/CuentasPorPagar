@@ -28,6 +28,8 @@ Partial Class mdicuentasPorPagar
         Me.ConfiguraciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NombrePerfilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SucursalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DepartamentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EmpresasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CambiarDeEmpresaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CatálogosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -64,8 +66,6 @@ Partial Class mdicuentasPorPagar
         Me.tssUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssEmpresa = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.DepartamentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SucursalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -100,6 +100,20 @@ Partial Class mdicuentasPorPagar
         Me.NombrePerfilesToolStripMenuItem.Name = "NombrePerfilesToolStripMenuItem"
         Me.NombrePerfilesToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.NombrePerfilesToolStripMenuItem.Text = "Nombre Perfiles"
+        '
+        'SucursalesToolStripMenuItem
+        '
+        Me.SucursalesToolStripMenuItem.Enabled = False
+        Me.SucursalesToolStripMenuItem.Name = "SucursalesToolStripMenuItem"
+        Me.SucursalesToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.SucursalesToolStripMenuItem.Text = "Sucursales"
+        '
+        'DepartamentosToolStripMenuItem
+        '
+        Me.DepartamentosToolStripMenuItem.Enabled = False
+        Me.DepartamentosToolStripMenuItem.Name = "DepartamentosToolStripMenuItem"
+        Me.DepartamentosToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.DepartamentosToolStripMenuItem.Text = "Departamentos"
         '
         'EmpresasToolStripMenuItem
         '
@@ -350,20 +364,6 @@ Partial Class mdicuentasPorPagar
         Me.tssEmpresa.Name = "tssEmpresa"
         Me.tssEmpresa.Size = New System.Drawing.Size(52, 17)
         Me.tssEmpresa.Text = "Empresa"
-        '
-        'DepartamentosToolStripMenuItem
-        '
-        Me.DepartamentosToolStripMenuItem.Enabled = False
-        Me.DepartamentosToolStripMenuItem.Name = "DepartamentosToolStripMenuItem"
-        Me.DepartamentosToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
-        Me.DepartamentosToolStripMenuItem.Text = "Departamentos"
-        '
-        'SucursalesToolStripMenuItem
-        '
-        Me.SucursalesToolStripMenuItem.Enabled = False
-        Me.SucursalesToolStripMenuItem.Name = "SucursalesToolStripMenuItem"
-        Me.SucursalesToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
-        Me.SucursalesToolStripMenuItem.Text = "Sucursales"
         '
         'mdicuentasPorPagar
         '

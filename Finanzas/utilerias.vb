@@ -11,6 +11,8 @@ Module utilerias
     Public varGlobal_IdEmpresa As String
     Public varGlobal_Empresa As String
     Public varGlobal_rfcEmpresa As String
+
+
     Public Function validaRfc(rfc As String)
         If (Regex.IsMatch(rfc.Trim, "^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$")) Then
             Return ""

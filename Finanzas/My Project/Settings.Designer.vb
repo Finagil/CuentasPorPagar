@@ -98,18 +98,6 @@ Namespace My
                 Me("nas") = value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\server-nas\TmpFinagil\")>  _
-        Public Property RutaTMP() As String
-            Get
-                Return CType(Me("RutaTMP"),String)
-            End Get
-            Set
-                Me("RutaTMP") = value
-            End Set
-        End Property
     End Class
 End Namespace
 

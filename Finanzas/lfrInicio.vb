@@ -4,6 +4,8 @@ Imports System.IO
 Imports System.Collections.Specialized
 Imports System.Web
 Imports System.Deployment.Application
+Imports System.ComponentModel
+
 Public Class lfrInicio
 
     Dim Hash As New ClaseHash
@@ -81,4 +83,5 @@ Public Class lfrInicio
 
         taUsuarios.ObtEmpresas_FillBy(t, UsernameTextBox.Text)
     End Sub
+
 End Class

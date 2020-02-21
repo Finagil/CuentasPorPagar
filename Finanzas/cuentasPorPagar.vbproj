@@ -62,10 +62,16 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -287,6 +293,12 @@
     <Compile Include="Gastos\frmSaldosGastosDetalle.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Gastos\frmSaldosPendientesGts.Designer.vb">
+      <DependentUpon>frmSaldosPendientesGts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Gastos\frmSaldosPendientesGts.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="lfrInicio.Designer.vb">
       <DependentUpon>lfrInicio.vb</DependentUpon>
     </Compile>
@@ -313,6 +325,24 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="registrosContables\frmDiario.Designer.vb">
+      <DependentUpon>frmDiario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="registrosContables\frmDiario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="registrosContables\frmReportePolizaDiario.Designer.vb">
+      <DependentUpon>frmReportePolizaDiario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="registrosContables\frmReportePolizaDiario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="registrosContables\rptPolizaDiario.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPolizaDiario.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="utilerias.vb" />
   </ItemGroup>
@@ -419,6 +449,16 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="registrosContables\frmDiario.resx">
+      <DependentUpon>frmDiario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="registrosContables\frmReportePolizaDiario.resx">
+      <DependentUpon>frmReportePolizaDiario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="registrosContables\rptPolizaDiario.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPolizaDiario.vb</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="contpaq.xsc">
@@ -487,6 +527,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo-shop-primary.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

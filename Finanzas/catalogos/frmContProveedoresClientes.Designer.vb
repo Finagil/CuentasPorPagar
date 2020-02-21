@@ -30,20 +30,17 @@ Partial Class frmContProveedoresClientes
         Dim NitLabel As System.Windows.Forms.Label
         Dim IdSucursalLabel As System.Windows.Forms.Label
         Dim RelacionadoLabel As System.Windows.Forms.Label
-        Dim CuentaContablePagarLabel As System.Windows.Forms.Label
         Dim MontoMaxTransaccionLabel As System.Windows.Forms.Label
         Dim NacionalidadLabel As System.Windows.Forms.Label
         Dim FechaRegistroLabel As System.Windows.Forms.Label
         Dim MailLabel As System.Windows.Forms.Label
         Dim EmpresaLabel As System.Windows.Forms.Label
-        Dim Label1 As System.Windows.Forms.Label
-        Dim CuentaBancariaLabel As System.Windows.Forms.Label
-        Dim ClabeLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmContProveedoresClientes))
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.CXP_ProveedoresBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_ProveedoresTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_ProveedoresTableAdapter()
         Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
+        Me.CXP_CuentasBancariasProvTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasBancariasProvTableAdapter()
         Me.CXP_CuentasContablesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasContablesTableAdapter()
         Me.CXP_SucursalesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_SucursalesTableAdapter()
         Me.CXP_ProveedoresBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
@@ -70,7 +67,6 @@ Partial Class frmContProveedoresClientes
         Me.MailTextBox = New System.Windows.Forms.TextBox()
         Me.cmbSucursal = New System.Windows.Forms.ComboBox()
         Me.CXPSucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.cmbCuentaContable = New System.Windows.Forms.ComboBox()
         Me.CXPCuentasContablesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
@@ -79,13 +75,17 @@ Partial Class frmContProveedoresClientes
         Me.cmbNacionalida = New System.Windows.Forms.ComboBox()
         Me.CXPcPaisBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_c_PaisTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_c_PaisTableAdapter()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.CXPBancosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CuentaBancariaTextBox = New System.Windows.Forms.TextBox()
-        Me.ClabeTextBox = New System.Windows.Forms.TextBox()
-        Me.CXP_BancosTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_BancosTableAdapter()
-        Me.txt = New System.Windows.Forms.TextBox()
+        Me.txtBuscaProveedor = New System.Windows.Forms.TextBox()
         Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.CXP_CuentasBancariasProvBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXP_CuentasBancariasProvDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.CXPBancosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CXP_BancosTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_BancosTableAdapter()
         RazonSocialLabel = New System.Windows.Forms.Label()
         RfcLabel = New System.Windows.Forms.Label()
         CurpLabel = New System.Windows.Forms.Label()
@@ -93,15 +93,11 @@ Partial Class frmContProveedoresClientes
         NitLabel = New System.Windows.Forms.Label()
         IdSucursalLabel = New System.Windows.Forms.Label()
         RelacionadoLabel = New System.Windows.Forms.Label()
-        CuentaContablePagarLabel = New System.Windows.Forms.Label()
         MontoMaxTransaccionLabel = New System.Windows.Forms.Label()
         NacionalidadLabel = New System.Windows.Forms.Label()
         FechaRegistroLabel = New System.Windows.Forms.Label()
         MailLabel = New System.Windows.Forms.Label()
         EmpresaLabel = New System.Windows.Forms.Label()
-        Label1 = New System.Windows.Forms.Label()
-        CuentaBancariaLabel = New System.Windows.Forms.Label()
-        ClabeLabel = New System.Windows.Forms.Label()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_ProveedoresBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_ProveedoresBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,6 +106,8 @@ Partial Class frmContProveedoresClientes
         CType(Me.CXPCuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPEmpresasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPcPaisBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXP_CuentasBancariasProvBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXP_CuentasBancariasProvDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPBancosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -161,7 +159,7 @@ Partial Class frmContProveedoresClientes
         'IdSucursalLabel
         '
         IdSucursalLabel.AutoSize = True
-        IdSucursalLabel.Location = New System.Drawing.Point(282, 205)
+        IdSucursalLabel.Location = New System.Drawing.Point(542, 101)
         IdSucursalLabel.Name = "IdSucursalLabel"
         IdSucursalLabel.Size = New System.Drawing.Size(51, 13)
         IdSucursalLabel.TabIndex = 11
@@ -170,26 +168,17 @@ Partial Class frmContProveedoresClientes
         'RelacionadoLabel
         '
         RelacionadoLabel.AutoSize = True
-        RelacionadoLabel.Location = New System.Drawing.Point(35, 287)
+        RelacionadoLabel.Location = New System.Drawing.Point(524, 125)
         RelacionadoLabel.Name = "RelacionadoLabel"
         RelacionadoLabel.Size = New System.Drawing.Size(70, 13)
         RelacionadoLabel.TabIndex = 13
         RelacionadoLabel.Text = "Relacionado:"
         AddHandler RelacionadoLabel.Click, AddressOf Me.RelacionadoLabel_Click
         '
-        'CuentaContablePagarLabel
-        '
-        CuentaContablePagarLabel.AutoSize = True
-        CuentaContablePagarLabel.Location = New System.Drawing.Point(16, 150)
-        CuentaContablePagarLabel.Name = "CuentaContablePagarLabel"
-        CuentaContablePagarLabel.Size = New System.Drawing.Size(89, 13)
-        CuentaContablePagarLabel.TabIndex = 17
-        CuentaContablePagarLabel.Text = "Cuenta Contable:"
-        '
         'MontoMaxTransaccionLabel
         '
         MontoMaxTransaccionLabel.AutoSize = True
-        MontoMaxTransaccionLabel.Location = New System.Drawing.Point(315, 177)
+        MontoMaxTransaccionLabel.Location = New System.Drawing.Point(801, 48)
         MontoMaxTransaccionLabel.Name = "MontoMaxTransaccionLabel"
         MontoMaxTransaccionLabel.Size = New System.Drawing.Size(63, 13)
         MontoMaxTransaccionLabel.TabIndex = 19
@@ -207,7 +196,7 @@ Partial Class frmContProveedoresClientes
         'FechaRegistroLabel
         '
         FechaRegistroLabel.AutoSize = True
-        FechaRegistroLabel.Location = New System.Drawing.Point(11, 180)
+        FechaRegistroLabel.Location = New System.Drawing.Point(497, 51)
         FechaRegistroLabel.Name = "FechaRegistroLabel"
         FechaRegistroLabel.Size = New System.Drawing.Size(97, 13)
         FechaRegistroLabel.TabIndex = 23
@@ -225,38 +214,11 @@ Partial Class frmContProveedoresClientes
         'EmpresaLabel
         '
         EmpresaLabel.AutoSize = True
-        EmpresaLabel.Location = New System.Drawing.Point(57, 205)
+        EmpresaLabel.Location = New System.Drawing.Point(543, 76)
         EmpresaLabel.Name = "EmpresaLabel"
         EmpresaLabel.Size = New System.Drawing.Size(51, 13)
         EmpresaLabel.TabIndex = 27
         EmpresaLabel.Text = "Empresa:"
-        '
-        'Label1
-        '
-        Label1.AutoSize = True
-        Label1.Location = New System.Drawing.Point(65, 232)
-        Label1.Name = "Label1"
-        Label1.Size = New System.Drawing.Size(41, 13)
-        Label1.TabIndex = 35
-        Label1.Text = "Banco:"
-        '
-        'CuentaBancariaLabel
-        '
-        CuentaBancariaLabel.AutoSize = True
-        CuentaBancariaLabel.Location = New System.Drawing.Point(17, 259)
-        CuentaBancariaLabel.Name = "CuentaBancariaLabel"
-        CuentaBancariaLabel.Size = New System.Drawing.Size(89, 13)
-        CuentaBancariaLabel.TabIndex = 35
-        CuentaBancariaLabel.Text = "Cuenta Bancaria:"
-        '
-        'ClabeLabel
-        '
-        ClabeLabel.AutoSize = True
-        ClabeLabel.Location = New System.Drawing.Point(283, 259)
-        ClabeLabel.Name = "ClabeLabel"
-        ClabeLabel.Size = New System.Drawing.Size(37, 13)
-        ClabeLabel.TabIndex = 36
-        ClabeLabel.Text = "Clabe:"
         '
         'DsProduction
         '
@@ -286,6 +248,7 @@ Partial Class frmContProveedoresClientes
         Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ComprobGtosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasProvTableAdapter = Me.CXP_CuentasBancariasProvTableAdapter
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Me.CXP_CuentasContablesTableAdapter
         Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
@@ -310,6 +273,10 @@ Partial Class frmContProveedoresClientes
         Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
+        'CXP_CuentasBancariasProvTableAdapter
+        '
+        Me.CXP_CuentasBancariasProvTableAdapter.ClearBeforeFill = True
+        '
         'CXP_CuentasContablesTableAdapter
         '
         Me.CXP_CuentasContablesTableAdapter.ClearBeforeFill = True
@@ -332,7 +299,7 @@ Partial Class frmContProveedoresClientes
         Me.CXP_ProveedoresBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.CXP_ProveedoresBindingNavigator.Name = "CXP_ProveedoresBindingNavigator"
         Me.CXP_ProveedoresBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.CXP_ProveedoresBindingNavigator.Size = New System.Drawing.Size(513, 25)
+        Me.CXP_ProveedoresBindingNavigator.Size = New System.Drawing.Size(990, 25)
         Me.CXP_ProveedoresBindingNavigator.TabIndex = 0
         Me.CXP_ProveedoresBindingNavigator.Text = "BindingNavigator1"
         '
@@ -473,7 +440,7 @@ Partial Class frmContProveedoresClientes
         'RelacionadoCheckBox
         '
         Me.RelacionadoCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.CXP_ProveedoresBindingSource, "relacionado", True))
-        Me.RelacionadoCheckBox.Location = New System.Drawing.Point(111, 282)
+        Me.RelacionadoCheckBox.Location = New System.Drawing.Point(600, 120)
         Me.RelacionadoCheckBox.Name = "RelacionadoCheckBox"
         Me.RelacionadoCheckBox.Size = New System.Drawing.Size(44, 24)
         Me.RelacionadoCheckBox.TabIndex = 14
@@ -482,7 +449,7 @@ Partial Class frmContProveedoresClientes
         'MontoMaxTransaccionTextBox
         '
         Me.MontoMaxTransaccionTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "montoMaxTransaccion", True))
-        Me.MontoMaxTransaccionTextBox.Location = New System.Drawing.Point(378, 174)
+        Me.MontoMaxTransaccionTextBox.Location = New System.Drawing.Point(864, 45)
         Me.MontoMaxTransaccionTextBox.Name = "MontoMaxTransaccionTextBox"
         Me.MontoMaxTransaccionTextBox.Size = New System.Drawing.Size(111, 20)
         Me.MontoMaxTransaccionTextBox.TabIndex = 20
@@ -490,7 +457,7 @@ Partial Class frmContProveedoresClientes
         'FechaRegistroDateTimePicker
         '
         Me.FechaRegistroDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CXP_ProveedoresBindingSource, "fechaRegistro", True))
-        Me.FechaRegistroDateTimePicker.Location = New System.Drawing.Point(111, 174)
+        Me.FechaRegistroDateTimePicker.Location = New System.Drawing.Point(597, 45)
         Me.FechaRegistroDateTimePicker.Name = "FechaRegistroDateTimePicker"
         Me.FechaRegistroDateTimePicker.Size = New System.Drawing.Size(200, 20)
         Me.FechaRegistroDateTimePicker.TabIndex = 24
@@ -509,9 +476,9 @@ Partial Class frmContProveedoresClientes
         Me.cmbSucursal.DataSource = Me.CXPSucursalesBindingSource
         Me.cmbSucursal.DisplayMember = "nombreSucursal"
         Me.cmbSucursal.FormattingEnabled = True
-        Me.cmbSucursal.Location = New System.Drawing.Point(337, 201)
+        Me.cmbSucursal.Location = New System.Drawing.Point(597, 97)
         Me.cmbSucursal.Name = "cmbSucursal"
-        Me.cmbSucursal.Size = New System.Drawing.Size(152, 21)
+        Me.cmbSucursal.Size = New System.Drawing.Size(378, 21)
         Me.cmbSucursal.TabIndex = 29
         Me.cmbSucursal.ValueMember = "idSucursal"
         '
@@ -520,18 +487,6 @@ Partial Class frmContProveedoresClientes
         Me.CXPSucursalesBindingSource.DataMember = "CXP_Sucursales"
         Me.CXPSucursalesBindingSource.DataSource = Me.DsProduction
         '
-        'cmbCuentaContable
-        '
-        Me.cmbCuentaContable.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_ProveedoresBindingSource, "cuentaContablePagar", True))
-        Me.cmbCuentaContable.DataSource = Me.CXPCuentasContablesBindingSource
-        Me.cmbCuentaContable.DisplayMember = "nombre"
-        Me.cmbCuentaContable.FormattingEnabled = True
-        Me.cmbCuentaContable.Location = New System.Drawing.Point(111, 147)
-        Me.cmbCuentaContable.Name = "cmbCuentaContable"
-        Me.cmbCuentaContable.Size = New System.Drawing.Size(378, 21)
-        Me.cmbCuentaContable.TabIndex = 30
-        Me.cmbCuentaContable.ValueMember = "idCuentaContable"
-        '
         'CXPCuentasContablesBindingSource
         '
         Me.CXPCuentasContablesBindingSource.DataMember = "CXP_CuentasContables"
@@ -539,7 +494,7 @@ Partial Class frmContProveedoresClientes
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(416, 323)
+        Me.btnSalir.Location = New System.Drawing.Point(900, 365)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 31
@@ -552,9 +507,9 @@ Partial Class frmContProveedoresClientes
         Me.ComboBox1.DataSource = Me.CXPEmpresasBindingSource
         Me.ComboBox1.DisplayMember = "razonSocial"
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(111, 201)
+        Me.ComboBox1.Location = New System.Drawing.Point(597, 72)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(157, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(378, 21)
         Me.ComboBox1.TabIndex = 32
         Me.ComboBox1.ValueMember = "idEmpresas"
         '
@@ -588,76 +543,99 @@ Partial Class frmContProveedoresClientes
         '
         Me.CXP_c_PaisTableAdapter.ClearBeforeFill = True
         '
-        'ComboBox2
+        'txtBuscaProveedor
         '
-        Me.ComboBox2.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_ProveedoresBindingSource, "banco", True))
-        Me.ComboBox2.DataSource = Me.CXPBancosBindingSource
-        Me.ComboBox2.DisplayMember = "razonSocial"
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(111, 229)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(378, 21)
-        Me.ComboBox2.TabIndex = 34
-        Me.ComboBox2.ValueMember = "claveBanco"
-        '
-        'CXPBancosBindingSource
-        '
-        Me.CXPBancosBindingSource.DataMember = "CXP_Bancos"
-        Me.CXPBancosBindingSource.DataSource = Me.DsProduction
-        '
-        'CuentaBancariaTextBox
-        '
-        Me.CuentaBancariaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "cuentaBancaria", True))
-        Me.CuentaBancariaTextBox.Location = New System.Drawing.Point(111, 256)
-        Me.CuentaBancariaTextBox.Name = "CuentaBancariaTextBox"
-        Me.CuentaBancariaTextBox.Size = New System.Drawing.Size(166, 20)
-        Me.CuentaBancariaTextBox.TabIndex = 36
-        '
-        'ClabeTextBox
-        '
-        Me.ClabeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "Clabe", True))
-        Me.ClabeTextBox.Location = New System.Drawing.Point(326, 256)
-        Me.ClabeTextBox.Name = "ClabeTextBox"
-        Me.ClabeTextBox.Size = New System.Drawing.Size(165, 20)
-        Me.ClabeTextBox.TabIndex = 37
-        '
-        'CXP_BancosTableAdapter
-        '
-        Me.CXP_BancosTableAdapter.ClearBeforeFill = True
-        '
-        'txt
-        '
-        Me.txt.Location = New System.Drawing.Point(20, 345)
-        Me.txt.Name = "txt"
-        Me.txt.Size = New System.Drawing.Size(228, 20)
-        Me.txt.TabIndex = 38
+        Me.txtBuscaProveedor.Location = New System.Drawing.Point(12, 365)
+        Me.txtBuscaProveedor.Name = "txtBuscaProveedor"
+        Me.txtBuscaProveedor.Size = New System.Drawing.Size(228, 20)
+        Me.txtBuscaProveedor.TabIndex = 38
         '
         'btnBuscar
         '
-        Me.btnBuscar.Location = New System.Drawing.Point(255, 345)
+        Me.btnBuscar.Location = New System.Drawing.Point(247, 365)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(75, 23)
         Me.btnBuscar.TabIndex = 39
         Me.btnBuscar.Text = "Buscar"
         Me.btnBuscar.UseVisualStyleBackColor = True
         '
+        'CXP_CuentasBancariasProvBindingSource
+        '
+        Me.CXP_CuentasBancariasProvBindingSource.DataMember = "CXP_CuentasBancariasProv"
+        Me.CXP_CuentasBancariasProvBindingSource.DataSource = Me.DsProduction
+        '
+        'CXP_CuentasBancariasProvDataGridView
+        '
+        Me.CXP_CuentasBancariasProvDataGridView.AutoGenerateColumns = False
+        Me.CXP_CuentasBancariasProvDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.CXP_CuentasBancariasProvDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5})
+        Me.CXP_CuentasBancariasProvDataGridView.DataSource = Me.CXP_CuentasBancariasProvBindingSource
+        Me.CXP_CuentasBancariasProvDataGridView.Location = New System.Drawing.Point(12, 161)
+        Me.CXP_CuentasBancariasProvDataGridView.Name = "CXP_CuentasBancariasProvDataGridView"
+        Me.CXP_CuentasBancariasProvDataGridView.Size = New System.Drawing.Size(963, 195)
+        Me.CXP_CuentasBancariasProvDataGridView.TabIndex = 39
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "idCuentas"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "idCuentas"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Visible = False
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "idProveedor"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "idProveedor"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.Visible = False
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "idBanco"
+        Me.DataGridViewTextBoxColumn3.DataSource = Me.CXPBancosBindingSource
+        Me.DataGridViewTextBoxColumn3.DisplayMember = "nombreCorto"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Banco"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn3.ValueMember = "idBancos"
+        Me.DataGridViewTextBoxColumn3.Width = 400
+        '
+        'CXPBancosBindingSource
+        '
+        Me.CXPBancosBindingSource.DataMember = "CXP_Bancos"
+        Me.CXPBancosBindingSource.DataSource = Me.DsProduction
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "cuenta"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Cuenta"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.Width = 220
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "clabe"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "CLABE"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 250
+        '
+        'CXP_BancosTableAdapter
+        '
+        Me.CXP_BancosTableAdapter.ClearBeforeFill = True
+        '
         'frmContProveedoresClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(513, 377)
+        Me.ClientSize = New System.Drawing.Size(990, 400)
+        Me.Controls.Add(Me.CXP_CuentasBancariasProvDataGridView)
         Me.Controls.Add(Me.btnBuscar)
-        Me.Controls.Add(Me.txt)
-        Me.Controls.Add(ClabeLabel)
-        Me.Controls.Add(Me.ClabeTextBox)
-        Me.Controls.Add(CuentaBancariaLabel)
-        Me.Controls.Add(Me.CuentaBancariaTextBox)
-        Me.Controls.Add(Label1)
-        Me.Controls.Add(Me.ComboBox2)
+        Me.Controls.Add(Me.txtBuscaProveedor)
         Me.Controls.Add(Me.cmbNacionalida)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.btnSalir)
-        Me.Controls.Add(Me.cmbCuentaContable)
         Me.Controls.Add(Me.cmbSucursal)
         Me.Controls.Add(EmpresaLabel)
         Me.Controls.Add(MailLabel)
@@ -667,7 +645,6 @@ Partial Class frmContProveedoresClientes
         Me.Controls.Add(NacionalidadLabel)
         Me.Controls.Add(MontoMaxTransaccionLabel)
         Me.Controls.Add(Me.MontoMaxTransaccionTextBox)
-        Me.Controls.Add(CuentaContablePagarLabel)
         Me.Controls.Add(RelacionadoLabel)
         Me.Controls.Add(Me.RelacionadoCheckBox)
         Me.Controls.Add(IdSucursalLabel)
@@ -694,6 +671,8 @@ Partial Class frmContProveedoresClientes
         CType(Me.CXPCuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPEmpresasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPcPaisBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXP_CuentasBancariasProvBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXP_CuentasBancariasProvDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPBancosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -730,7 +709,6 @@ Partial Class frmContProveedoresClientes
     Friend WithEvents cmbSucursal As ComboBox
     Friend WithEvents CXPSucursalesBindingSource As BindingSource
     Friend WithEvents CXP_CuentasContablesTableAdapter As dsProductionTableAdapters.CXP_CuentasContablesTableAdapter
-    Friend WithEvents cmbCuentaContable As ComboBox
     Friend WithEvents CXPCuentasContablesBindingSource As BindingSource
     Friend WithEvents btnSalir As Button
     Friend WithEvents ComboBox1 As ComboBox
@@ -739,11 +717,16 @@ Partial Class frmContProveedoresClientes
     Friend WithEvents cmbNacionalida As ComboBox
     Friend WithEvents CXPcPaisBindingSource As BindingSource
     Friend WithEvents CXP_c_PaisTableAdapter As dsProductionTableAdapters.CXP_c_PaisTableAdapter
-    Friend WithEvents ComboBox2 As ComboBox
-    Friend WithEvents CuentaBancariaTextBox As TextBox
-    Friend WithEvents ClabeTextBox As TextBox
+    Friend WithEvents txtBuscaProveedor As TextBox
+    Friend WithEvents btnBuscar As Button
+    Friend WithEvents CXP_CuentasBancariasProvBindingSource As BindingSource
+    Friend WithEvents CXP_CuentasBancariasProvTableAdapter As dsProductionTableAdapters.CXP_CuentasBancariasProvTableAdapter
+    Friend WithEvents CXP_CuentasBancariasProvDataGridView As DataGridView
     Friend WithEvents CXPBancosBindingSource As BindingSource
     Friend WithEvents CXP_BancosTableAdapter As dsProductionTableAdapters.CXP_BancosTableAdapter
-    Friend WithEvents txt As TextBox
-    Friend WithEvents btnBuscar As Button
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
 End Class

@@ -29,8 +29,8 @@ Partial Class frmSATImpuestos
         Dim CtaDeImpuestosLabel As System.Windows.Forms.Label
         Dim Label1 As System.Windows.Forms.Label
         Dim DescripcionLargaLabel As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSATImpuestos))
         Dim Label2 As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSATImpuestos))
         Me.CXP_ImpuestoBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.CXP_ImpuestoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -53,11 +53,14 @@ Partial Class frmSATImpuestos
         Me.CXP_ImpuestoTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_ImpuestoTableAdapter()
         Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CuentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Contpaq = New cuentasPorPagar.contpaq()
         Me.CXPCuentasContablesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_CuentasContablesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasContablesTableAdapter()
         Me.cmbTipo = New System.Windows.Forms.ComboBox()
         Me.DescripcionLargaTextBox = New System.Windows.Forms.TextBox()
         Me.cmbFactor = New System.Windows.Forms.ComboBox()
+        Me.CuentasTableAdapter = New cuentasPorPagar.contpaqTableAdapters.CuentasTableAdapter()
         DescripcionLabel = New System.Windows.Forms.Label()
         EfectoLabel = New System.Windows.Forms.Label()
         ImpuestoLabel = New System.Windows.Forms.Label()
@@ -69,6 +72,8 @@ Partial Class frmSATImpuestos
         Me.CXP_ImpuestoBindingNavigator.SuspendLayout()
         CType(Me.CXP_ImpuestoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPCuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -125,6 +130,15 @@ Partial Class frmSATImpuestos
         DescripcionLargaLabel.Size = New System.Drawing.Size(66, 13)
         DescripcionLargaLabel.TabIndex = 15
         DescripcionLargaLabel.Text = "Descripción:"
+        '
+        'Label2
+        '
+        Label2.AutoSize = True
+        Label2.Location = New System.Drawing.Point(364, 36)
+        Label2.Name = "Label2"
+        Label2.Size = New System.Drawing.Size(40, 13)
+        Label2.TabIndex = 18
+        Label2.Text = "Factor:"
         '
         'CXP_ImpuestoBindingNavigator
         '
@@ -292,6 +306,7 @@ Partial Class frmSATImpuestos
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CFDI_Estado_NominaTableAdapter = Nothing
         Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
@@ -300,36 +315,55 @@ Partial Class frmSATImpuestos
         Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ComprobGtosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Me.CXP_ImpuestoTableAdapter
+        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_RegContTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoConceptoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoCuentaContableTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
         Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdi2TableAdapter = Nothing
         Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
         Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'ComboBox1
         '
+        Me.ComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.ComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_ImpuestoBindingSource, "ctaDeImpuestos", True))
-        Me.ComboBox1.DataSource = Me.CXPCuentasContablesBindingSource
-        Me.ComboBox1.DisplayMember = "nombre"
+        Me.ComboBox1.DataSource = Me.CuentasBindingSource
+        Me.ComboBox1.DisplayMember = "nCuenta"
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(109, 87)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(379, 21)
         Me.ComboBox1.TabIndex = 13
-        Me.ComboBox1.ValueMember = "idCuentaContable"
+        Me.ComboBox1.ValueMember = "Id"
+        '
+        'CuentasBindingSource
+        '
+        Me.CuentasBindingSource.DataMember = "Cuentas"
+        Me.CuentasBindingSource.DataSource = Me.Contpaq
+        '
+        'Contpaq
+        '
+        Me.Contpaq.DataSetName = "contpaq"
+        Me.Contpaq.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'CXPCuentasContablesBindingSource
         '
@@ -368,14 +402,9 @@ Partial Class frmSATImpuestos
         Me.cmbFactor.Size = New System.Drawing.Size(78, 21)
         Me.cmbFactor.TabIndex = 17
         '
-        'Label2
+        'CuentasTableAdapter
         '
-        Label2.AutoSize = True
-        Label2.Location = New System.Drawing.Point(364, 36)
-        Label2.Name = "Label2"
-        Label2.Size = New System.Drawing.Size(40, 13)
-        Label2.TabIndex = 18
-        Label2.Text = "Factor:"
+        Me.CuentasTableAdapter.ClearBeforeFill = True
         '
         'frmSATImpuestos
         '
@@ -406,6 +435,8 @@ Partial Class frmSATImpuestos
         Me.CXP_ImpuestoBindingNavigator.PerformLayout()
         CType(Me.CXP_ImpuestoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPCuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -439,4 +470,7 @@ Partial Class frmSATImpuestos
     Friend WithEvents cmbTipo As ComboBox
     Friend WithEvents DescripcionLargaTextBox As TextBox
     Friend WithEvents cmbFactor As ComboBox
+    Friend WithEvents CuentasBindingSource As BindingSource
+    Friend WithEvents Contpaq As contpaq
+    Friend WithEvents CuentasTableAdapter As contpaqTableAdapters.CuentasTableAdapter
 End Class

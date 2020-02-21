@@ -1,19 +1,66 @@
 ﻿Public Class frmContProveedoresClientes
     Private Sub CXP_ProveedoresBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles CXP_ProveedoresBindingNavigatorSaveItem.Click
-        Me.Validate()
-        Me.CXP_ProveedoresBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.DsProduction)
-        Dim f As Integer
-        For f = 0 To Me.Controls.Count - 1
-            If TypeOf Me.Controls(f) Is TextBox Or TypeOf Me.Controls(f) Is CheckBox Or TypeOf Me.Controls(f) Is DateTimePicker Or TypeOf Me.Controls(f) Is ComboBox Then
-                Me.Controls(f).Enabled = False
-            End If
-        Next
-        BindingNavigatorAddNewItem.Enabled = True
-        CXP_ProveedoresBindingNavigatorSaveItem.Enabled = False
+
+        If Me.ValidaCuentas() = "Ok" Then
+            Me.CXP_CuentasBancariasProvBindingSource.Current("idProveedor") = Me.CXP_ProveedoresBindingSource.Current("idProveedor")
+            Me.Validate()
+            Me.CXP_ProveedoresBindingSource.EndEdit()
+            Me.CXP_CuentasBancariasProvBindingSource.EndEdit()
+            Me.TableAdapterManager.UpdateAll(Me.DsProduction)
+            MsgBox("Actualización correcta", MsgBoxStyle.Information, "Actualización de registros")
+        End If
+
+        If Me.ValidaCuentas() = "Ok1" Then
+            Me.Validate()
+            Me.CXP_ProveedoresBindingSource.EndEdit()
+            Me.TableAdapterManager.UpdateAll(Me.DsProduction)
+            MsgBox("Actualización correcta", MsgBoxStyle.Information, "Actualización de registros")
+        End If
+        'Dim f As Integer
+        'For f = 0 To Me.Controls.Count - 1
+        '    If TypeOf Me.Controls(f) Is TextBox Or TypeOf Me.Controls(f) Is CheckBox Or TypeOf Me.Controls(f) Is DateTimePicker Or TypeOf Me.Controls(f) Is ComboBox Then
+        '        Me.Controls(f).Enabled = False
+        '    End If
+        'Next
+        'BindingNavigatorAddNewItem.Enabled = True
+        'CXP_ProveedoresBindingNavigatorSaveItem.Enabled = False
     End Sub
 
+    Function ValidaCuentas()
+        Dim varOk As String = ""
+        For Each fCuentas As DataGridViewRow In CXP_CuentasBancariasProvDataGridView.Rows
+
+            If fCuentas.Cells(3).Value IsNot Nothing Then
+                If fCuentas.Cells(3).Value.ToString.Length <> 10 And IsNumeric(fCuentas.Cells(3).Value) Then
+                    MsgBox("La cuenta bancaria debe de ser numerica y con longitud igual a 10", MsgBoxStyle.Critical, "Error en cuentas bancarias")
+                    varOk = "Err"
+                    Exit Function
+                End If
+            End If
+
+            If fCuentas.Cells(4).Value IsNot Nothing Then
+                If fCuentas.Cells(4).Value.ToString.Length <> 16 And IsNumeric(fCuentas.Cells(4).Value) Then
+                    MsgBox("La cuenta CLABE debe de ser numerica y con longitud igual a 18", MsgBoxStyle.Critical, "Error en cuentas CLABE")
+                    varOk = "Err"
+                    Exit Function
+                Else
+                    varOk = "Ok"
+                End If
+            End If
+
+            If CXP_CuentasBancariasProvDataGridView.Rows.Count = 1 And fCuentas.Cells(2).Value Is Nothing Then
+                varOk = "Ok1"
+            End If
+        Next
+
+        Return varOk
+    End Function
+
     Private Sub frmContProveedoresClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Bancos' Puede moverla o quitarla según sea necesario.
+        Me.CXP_BancosTableAdapter.Fill(Me.DsProduction.CXP_Bancos)
+        'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_CuentasBancariasProv' Puede moverla o quitarla según sea necesario.
+        Me.CXP_CuentasBancariasProvTableAdapter.Fill(Me.DsProduction.CXP_CuentasBancariasProv)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Bancos' Puede moverla o quitarla según sea necesario.
         Me.CXP_BancosTableAdapter.Fill(Me.DsProduction.CXP_Bancos)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_c_Pais' Puede moverla o quitarla según sea necesario.
@@ -26,6 +73,8 @@
         Me.CXP_SucursalesTableAdapter.Fill(Me.DsProduction.CXP_Sucursales)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Proveedores' Puede moverla o quitarla según sea necesario.
         Me.CXP_ProveedoresTableAdapter.Fill(Me.DsProduction.CXP_Proveedores)
+
+        actualizaCuentas()
     End Sub
 
     Private Sub RelacionadoLabel_Click(sender As Object, e As EventArgs)
@@ -85,7 +134,16 @@
         CXP_ProveedoresBindingNavigatorSaveItem.Enabled = True
     End Sub
 
-    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
-        'CXP_ProveedoresBindingSource.Filter = "razonSocial like '%" & 
+    Public Sub actualizaCuentas()
+        CXP_CuentasBancariasProvBindingSource.Filter = "idProveedor=" & CXP_ProveedoresBindingSource.Current("idProveedor")
     End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        Me.CXP_ProveedoresBindingSource.Filter = "razonSocial like '%" & txtBuscaProveedor.Text & "%'"
+    End Sub
+
+    Private Sub RazonSocialTextBox_TextChanged(sender As Object, e As EventArgs) Handles RazonSocialTextBox.TextChanged
+        actualizaCuentas()
+    End Sub
+
 End Class
